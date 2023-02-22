@@ -27,16 +27,14 @@ body {
 .boton {
   border: 2px solid black;
   font-size: 40px;
-  background-color: gray;
+  background-color: rgb(5, 231, 156);
   cursor: pointer;
+  margin: 15px;
+  padding: 10px;
 }
 
 .container h1{
   font-size: 40px;
-  margin: 15px;
+  margin: 20px;
 }
-.container button {
-  margin: 15px;
-  padding: 10px;
-  
-}
+
