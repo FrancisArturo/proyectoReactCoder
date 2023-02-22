@@ -26,5 +26,17 @@ body {
 }
 .boton {
   border: 2px solid black;
-  font-size: 50px;
+  font-size: 40px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.container h1{
+  font-size: 40px;
+  margin: 15px;
+}
+.container button {
+  margin: 15px;
+  padding: 10px;
+  
 }

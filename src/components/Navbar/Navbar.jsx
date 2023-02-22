@@ -9,6 +9,7 @@ return (
       <a href="#">Productos</a>
       <a href="#">Nosotros</a>
       <a href="#">FAQ</a>
+      <Carrito />
     </nav>
   )
 }
