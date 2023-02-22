@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black; }
+
+body {
+  background-color: aquamarine;
+}
+.containerNavbar {
+  display: flex;
+  background-color: rgb(70, 151, 124);
+  justify-content: space-around;
+  align-items: center;
+}
+.containerNavbar a {
+  font-size: 30px;
+  margin: 15px;
+}
+
+.logo {
+  width: 20%;
+}
+.boton {
+  border: 2px solid black;
+  font-size: 50px;
+}
