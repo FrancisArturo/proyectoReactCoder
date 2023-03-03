@@ -21,9 +21,6 @@ body {
   margin: 15px;
 }
 
-.logo {
-  width: 20%;
-}
 .boton {
   border: 2px solid black;
   font-size: 40px;
@@ -37,4 +34,19 @@ body {
   font-size: 40px;
   margin: 20px;
 }
+.logo {
+  width: 120px;
+  margin: 20px;
+}
+.ContainerProd {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  
 
+}
+.ContainerProd img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
