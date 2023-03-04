@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
+import ItemDetailContainer from './components/ContenedorItem/ItemDetailContainer';
 import ItemListContainer from './components/ContenedorProd/ItemListContainer'
 import ResponsiveAppBar from './components/Navbar/Navbar';
 
@@ -21,10 +23,13 @@ function App() {
 
 
   return (
-    <div className='container'>
+    <div>
       <ResponsiveAppBar />
-      <ItemListContainer productos={productos} />
-
+      <Routes>
+        <Route path="/" element={<ItemListContainer productos={productos} />} />
+        <Route path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
+        <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} />  
+      </Routes>
     </div>
     
   )
