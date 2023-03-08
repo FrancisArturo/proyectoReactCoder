@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
@@ -27,6 +27,8 @@ const Cardproduct = ({producto}) => {
           <Typography variant="h5" color="text">
           $ {producto.price}
           </Typography>
+          <br />
+          <Rating name="rate-number" value={producto.rating.rate} readOnly />
         </CardContent>
       </CardActionArea>
     </Card>
