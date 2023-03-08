@@ -16,7 +16,7 @@ import Carrito from "../Carrito/Carrito"
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Productos', 'Nosotros', 'Blog'];
+const pages = ['Nosotros', 'Blog'];
 const settings = ["men's clothing", "jewelery", "women's clothing", "electronics",];
 
 function ResponsiveAppBar() {

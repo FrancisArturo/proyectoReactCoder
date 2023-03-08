@@ -46,3 +46,28 @@ body {
   height: 200px;
   object-fit: cover;
 }
+
+.containerItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2.5rem;
+}
+.imagenProducto {
+  width: 80%;
+  
+}
+.containerInformacion {
+  width: 50%;
+  margin-top: 1.25rem;
+}
+.containerInformacion p {
+  font-size: 20px;
+}
+
+.descripcion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23px;
+  
+}
