@@ -4,16 +4,20 @@ import './App.css'
 import ItemDetailContainer from './components/ContenedorItem/ItemDetailContainer';
 import ItemListContainer from './components/ContenedorProd/ItemListContainer'
 import ResponsiveAppBar from './components/Navbar/Navbar';
+import db from '../db/firebase-config';
+import { collection, getDocs } from 'firebase/firestore';
 
 
 
 function App() {
   const [productos, setProductos] = useState([])
+  const itemsCollectionRef = collection(db, 'items')
 
     const getProductos = async () => {
-      const response = await fetch('https://fakestoreapi.com/products')
-      const data = await response.json()
-      setProductos(data);
+      const itemsCollection = await getDocs(itemsCollectionRef);
+      setProductos(
+        itemsCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+      );
       }
   useEffect (() => {
     getProductos()
