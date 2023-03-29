@@ -6,12 +6,14 @@ import ItemListContainer from './components/ContenedorProd/ItemListContainer'
 import ResponsiveAppBar from './components/Navbar/Navbar';
 import db from '../db/firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 function App() {
   const [productos, setProductos] = useState([])
   const itemsCollectionRef = collection(db, 'items')
+
 
     const getProductos = async () => {
       const itemsCollection = await getDocs(itemsCollectionRef);
@@ -33,6 +35,7 @@ function App() {
         <Route path="/" element={<ItemListContainer productos={productos} />} />
         <Route path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
         <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} />  
+        <Route path="/404" element={<h1>404: Not Found</h1>} />
       </Routes>
     </div>
     
