@@ -1,6 +1,6 @@
 
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import db from "../../../db/firebase-config";
 import AddItemButton from "../ButtonAgregar/AddItemButton";
@@ -8,14 +8,15 @@ import ItemQuantitySelector from "../ContenedorSelector/ItemQuantitySelector";
 
 
 const ItemDetailContainer = () => {
-    
     const {id} = useParams();
     const [producto, setProducto] =  useState({});
     const navigate = useNavigate();
+    
+    
 
     const getProducto = async (id) => {
         const docRef = doc(db, "items", id);
-
+        
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             setProducto(docSnap.data());
@@ -26,9 +27,10 @@ const ItemDetailContainer = () => {
     
     useEffect(() => {
       getProducto(id)
+      
     }, [id])
     
-    
+
   return (
     <div className="containerItem">
         <img src={producto.image} alt={producto.title} className="imagenProducto"/>
@@ -41,8 +43,9 @@ const ItemDetailContainer = () => {
               <p>{producto.description} </p>
               <ItemQuantitySelector />
             </div> 
-            <AddItemButton />
+              <AddItemButton producto={producto} />
           </div>
+          
     </div>
   )
 }
