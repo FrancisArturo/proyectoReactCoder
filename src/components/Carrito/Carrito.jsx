@@ -1,14 +1,23 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import StyledBadge from '@mui/material/Badge';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import CartBody from '../ContenidoCarrito/CartBody';
+import { collection, getDocs } from 'firebase/firestore';
+import db from '../../../db/firebase-config';
+import { CartContext } from '../../contexts/CartContext';
 
 
 const  OffCanvasExample = ({ name, ...props }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    
+
+
+
 
 
     return (
@@ -18,14 +27,24 @@ const  OffCanvasExample = ({ name, ...props }) => {
                 <ShoppingCartIcon />
             </StyledBadge>
         </IconButton>
-            <Offcanvas show={show} onHide={handleClose} {...props}>
-            <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Tu Carrito</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-                Some text as placeholder. In real life you can have the elements you
-                have chosen. Like, text, images, lists, etc.
-            </Offcanvas.Body>
+            <Offcanvas show={show} onHide={handleClose} {...props} className="py-4 px-2">
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Tu Carrito</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <CartBody />
+                </Offcanvas.Body>
+                <div className='px-2 md:px4 mt-5'>
+                    <div className='subtotal d-flex justify-content-between'>
+                        <div>Subtotal</div>
+                        <div>total </div>
+                    </div>
+                    <div className='mt-3 w-100'>
+                        <a href="#">
+                            <button className='h-auto border border-dark rounded text-dark w-100 p-2'>Checkout</button>
+                        </a>
+                    </div>
+                </div>
             </Offcanvas>
         </>
     )

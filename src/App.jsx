@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import ItemDetailContainer from './components/ContenedorItem/ItemDetailContainer';
@@ -7,14 +7,17 @@ import ResponsiveAppBar from './components/Navbar/Navbar';
 import db from '../db/firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from './contexts/CartContext';
 
 
 
 function App() {
   const [productos, setProductos] = useState([])
+  const [cart, setCart] = useState([])
   const itemsCollectionRef = collection(db, 'items')
+  const cartCollectionRef = collection(db, 'cart')
 
-
+    const CartContext = createContext()
     const getProductos = async () => {
       const itemsCollection = await getDocs(itemsCollectionRef);
       setProductos(
@@ -26,7 +29,12 @@ function App() {
   }, [])
 
 
-
+  const getCart = async () => {
+    const cartCollection = await getDocs(CartCollectionRef);
+    setCart(
+        cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    );
+}
 
   return (
     <div>

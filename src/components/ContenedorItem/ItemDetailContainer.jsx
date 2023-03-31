@@ -4,7 +4,7 @@ import { useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import db from "../../../db/firebase-config";
 import AddItemButton from "../ButtonAgregar/AddItemButton";
-import ItemQuantitySelector from "../ContenedorSelector/ItemQuantitySelector";
+
 
 
 const ItemDetailContainer = () => {
@@ -41,11 +41,9 @@ const ItemDetailContainer = () => {
             </div>
             <div className="containerInformacion">
               <p>{producto.description} </p>
-              <ItemQuantitySelector />
             </div> 
               <AddItemButton producto={producto} />
           </div>
-          
     </div>
   )
 }

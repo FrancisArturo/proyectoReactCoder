@@ -14,7 +14,6 @@ const ItemListContainer = ({productos}) => {
     <div className="ContainerProd">
       {productos.map((producto) => (
         <Card key={producto.id} producto={producto} />
-        
       ))}
     </div>
   )

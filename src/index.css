@@ -91,7 +91,6 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 3rem;
 }
 .containerCantidad input {
   width: 50px;
@@ -105,4 +104,44 @@ button {
   font-size: 1.25rem;
   line-height: 1.75rem;
   border: none;
+}
+
+.cartBody {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  column-gap: 0.6rem;
+  border-bottom: 1px solid #8a8787;
+}
+.imgBody {
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+}
+.imgBody img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  vertical-align: middle;
+}
+.priceBody {
+  margin-left: auto;
+}
+.containerCart {
+  display: grid;
+  row-gap: 1.25rem;
+}
+.subtotal {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.botonEliminar {
+  font-size: .9rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+.signo {
+  cursor: pointer;
 }

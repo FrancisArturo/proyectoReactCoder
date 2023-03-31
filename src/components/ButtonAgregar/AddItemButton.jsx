@@ -1,5 +1,6 @@
 
-import AddItemButton1 from "../OffCanvas/OffCanvasBoton";
+import OffCanvasBoton from "../OffCanvas/OffCanvasBoton";
+
 
 
 
@@ -8,7 +9,7 @@ import AddItemButton1 from "../OffCanvas/OffCanvasBoton";
     return (
       <>
         {['end'].map((placement, idx) => (
-          <AddItemButton1 key={idx} placement={placement} name={placement} producto={producto} />
+          <OffCanvasBoton key={idx} placement={placement} name={placement} producto={producto} />
         ))}
       </>
     );
