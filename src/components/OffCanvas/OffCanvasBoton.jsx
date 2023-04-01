@@ -14,7 +14,7 @@ import { CartContext } from '../../contexts/CartContext';
     const handleShow = () => setShow(true);
 
     const {AddItemCart, total} = useContext(CartContext)
-
+    
   
 
     return (

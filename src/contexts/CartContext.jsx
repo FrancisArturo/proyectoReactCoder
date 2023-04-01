@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import React from "react";
 import db from "../../db/firebase-config";
@@ -47,9 +47,22 @@ const CartProvider = ({children}) => {
         SumaTotal()
     }
     const AddItemCart = async (item) => {
-        await addDoc(CartCollectionRef, item);
-        getCart()
-        SumaTotal()
+        const itemExist = cart.find((cartItem) => cartItem.producto.title === item.producto.title)
+        if(itemExist){
+            const docRef = doc(db, 'cart', itemExist.id)
+            await updateDoc(docRef, {
+                producto: {
+                    ...item.producto,
+                    quantity: itemExist.producto.quantity + 1
+                }
+            })
+            getCart()
+            SumaTotal()
+        } else {
+            await addDoc(CartCollectionRef, item);
+            getCart()
+            SumaTotal() 
+        }
     }
 
 
