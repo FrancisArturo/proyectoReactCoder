@@ -1,28 +1,12 @@
-import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
-import db from '../../../db/firebase-config'
+import React, { useContext} from 'react'
 import ItemQuantitySelector from '../ContenedorSelector/ItemQuantitySelector'
+import { CartContext } from '../../contexts/CartContext'
+
 
 const CartBody = () => {
-    const [cart, setCart] = useState([])
-    const CartCollectionRef = collection(db, 'cart')
 
-    const getCart = async () => {
-        const cartCollection = await getDocs(CartCollectionRef);
-        setCart(
-            cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        );
-    }
-
-    useEffect(() => {
-        getCart()
-    }, [])
-
-    const deleteItem = async (id) => {
-        const docRef = doc(db, 'cart', id)
-        await deleteDoc(docRef)
-        getCart()
-    }
+    const {cart, setCart, deleteItem} = useContext(CartContext)
+    
     return (
             <div className='containerCart'>{cart.map((item)=> (
                 <div className='cartBody' key={item.id}>
@@ -32,7 +16,7 @@ const CartBody = () => {
                     <div className='descriptionBody'>
                         <h6>{item.producto.title}</h6>
                         <div className='d-flex align-items-center'>
-                            <ItemQuantitySelector item={item} setCart={setCart} />
+                            <ItemQuantitySelector item={item} setCart={setCart} cart={cart} />
                         </div>
                     </div>
                     <div className='priceBody'>

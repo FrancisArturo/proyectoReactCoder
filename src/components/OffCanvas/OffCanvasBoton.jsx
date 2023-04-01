@@ -1,8 +1,8 @@
-import { addDoc, collection, getDocs } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import db from '../../../db/firebase-config';
 import CartBody from '../ContenidoCarrito/CartBody';
+import { CartContext } from '../../contexts/CartContext';
+
 
 
 
@@ -12,11 +12,8 @@ import CartBody from '../ContenidoCarrito/CartBody';
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const cartCollectionRef = collection(db, 'cart');
-    
-    const AddItemCart = async (item) => {
-      await addDoc(cartCollectionRef, item);
-    }
+
+    const {AddItemCart, total} = useContext(CartContext)
 
   
 
@@ -32,8 +29,8 @@ import CartBody from '../ContenidoCarrito/CartBody';
           </Offcanvas.Body>
           <div className='px-2 md:px4 mt-5'>
             <div className='subtotal d-flex justify-content-between'>
-                <div>Subtotal</div>
-                <div>total</div>
+                <div>Total</div>
+                <div>${total} </div>
             </div>
             <div className='mt-3 w-100'>
                 <a href="#">

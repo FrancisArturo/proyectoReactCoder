@@ -1,12 +1,13 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import StyledBadge from '@mui/material/Badge';
-import { useContext, useEffect, useState } from 'react';
+import {useContext, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartBody from '../ContenidoCarrito/CartBody';
-import { collection, getDocs } from 'firebase/firestore';
-import db from '../../../db/firebase-config';
 import { CartContext } from '../../contexts/CartContext';
+
+
+
 
 
 const  OffCanvasExample = ({ name, ...props }) => {
@@ -14,16 +15,15 @@ const  OffCanvasExample = ({ name, ...props }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    
 
-
+    const {total, cantidad} = useContext(CartContext)
 
 
 
     return (
         <>
         <IconButton aria-label="cart" onClick={handleShow}>
-            <StyledBadge badgeContent={4} color="secondary">
+            <StyledBadge badgeContent={cantidad} color="secondary">
                 <ShoppingCartIcon />
             </StyledBadge>
         </IconButton>
@@ -36,8 +36,8 @@ const  OffCanvasExample = ({ name, ...props }) => {
                 </Offcanvas.Body>
                 <div className='px-2 md:px4 mt-5'>
                     <div className='subtotal d-flex justify-content-between'>
-                        <div>Subtotal</div>
-                        <div>total </div>
+                        <div>Total</div>
+                        <div>${total} </div>
                     </div>
                     <div className='mt-3 w-100'>
                         <a href="#">

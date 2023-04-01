@@ -7,37 +7,33 @@ import ResponsiveAppBar from './components/Navbar/Navbar';
 import db from '../db/firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CartContext } from './contexts/CartContext';
+import  CartProvider  from './contexts/CartContext';
 
 
 
 function App() {
   const [productos, setProductos] = useState([])
-  const [cart, setCart] = useState([])
   const itemsCollectionRef = collection(db, 'items')
-  const cartCollectionRef = collection(db, 'cart')
 
-    const CartContext = createContext()
+
     const getProductos = async () => {
       const itemsCollection = await getDocs(itemsCollectionRef);
       setProductos(
         itemsCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
       );
       }
+
+      
   useEffect (() => {
     getProductos()
   }, [])
 
+  
 
-  const getCart = async () => {
-    const cartCollection = await getDocs(CartCollectionRef);
-    setCart(
-        cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    );
-}
 
   return (
     <div>
+      <CartProvider>
       <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<ItemListContainer productos={productos} />} />
@@ -45,6 +41,7 @@ function App() {
         <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} />  
         <Route path="/404" element={<h1>404: Not Found</h1>} />
       </Routes>
+      </CartProvider>
     </div>
     
   )

@@ -1,9 +1,10 @@
 
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState} from "react";
+import { useContext, useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import db from "../../../db/firebase-config";
 import AddItemButton from "../ButtonAgregar/AddItemButton";
+import { CartContext } from "../../contexts/CartContext";
 
 
 
@@ -12,7 +13,7 @@ const ItemDetailContainer = () => {
     const [producto, setProducto] =  useState({});
     const navigate = useNavigate();
     
-    
+
 
     const getProducto = async (id) => {
         const docRef = doc(db, "items", id);

@@ -4,6 +4,7 @@ import db from "../../../db/firebase-config";
 
 
 const ItemQuantitySelector = ({item, setCart}) => {
+    
 
     const Sumar = async () => {
         
