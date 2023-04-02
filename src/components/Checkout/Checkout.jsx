@@ -3,6 +3,7 @@ import Order from "../Order/Order"
 import { CartContext } from "../../contexts/CartContext";
 import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
 import db from "../../../db/firebase-config";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const {cart, subtotal, setCart} = useContext(CartContext);
@@ -20,6 +21,8 @@ const Checkout = () => {
   const [errorEmailRepetido, setErrorEmailRepetido] = useState(false);
   const orderCollectionRef = collection(db, 'orders')
   const envio = 40;
+
+  
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -66,19 +69,20 @@ const Checkout = () => {
   }
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
     nombre? setErrorNombre(false): setErrorNombre(true);
-    apellido? setErrorApellido(false): setErrorApellido(true);
-    telefono? setErrorTelefono(false): setErrorTelefono(true);
+    apellido? setErrorApellido(false): setErrorApellido(true) ;
+    telefono? setErrorTelefono(false): setErrorTelefono(true) ;
     email? setErrorEmail(false): setErrorEmail(true);
     emailRepetido === email? setErrorEmailRepetido(false): setErrorEmailRepetido(true);
     if(nombre && apellido && telefono && email && emailRepetido === email){
       createOrder();
+    } else {
+      e.preventDefault();
     }
   };
 
-  console.log(date)
-
+  
+    
   return (
     <div className="containerCheckout">
       <div className="containerForm ">
@@ -123,9 +127,13 @@ const Checkout = () => {
                   </div>
                 </div>
               </div>
-              <div className="containerBotonComprar">
-                <button className="botonComprar" onClick={handleOnSubmit}>Confirmar Pedido</button>
-              </div>
+              
+                  <div className="containerBotonComprar">
+                  <Link to={`finish`}>
+                  <button className="botonComprar" onClick={handleOnSubmit}>Confirmar Pedido</button>
+                  </Link>
+                </div>
+              
             </form>
           </main>
           <footer>

@@ -41,7 +41,7 @@ const  OffCanvasExample = ({ name, ...props }) => {
                         <div>Total</div>
                         <div>${subtotal} </div>
                     </div>
-                    <Link to={`/Checkout`}>
+                    <Link to={`/checkout`}>
                         <div className='mt-3 w-100'>
                             <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={handleClose}>Checkout</button>
                         </div>

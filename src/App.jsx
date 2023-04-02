@@ -9,6 +9,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  CartProvider  from './contexts/CartContext';
 import Checkout from './components/Checkout/Checkout';
+import PedidoRegistrado from './components/PedidoRegistrado/PedidoRegistrado';
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
         <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} /> 
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout/finish" element={<PedidoRegistrado />} />
         <Route path="/404" element={<h1>404: Not Found</h1>} />
       </Routes>
       </CartProvider>
