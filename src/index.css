@@ -145,3 +145,129 @@ button {
 .signo {
   cursor: pointer;
 }
+.containerCheckout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1.25rem;
+  padding: 3rem 5rem;
+}
+.containerInputs {
+  display: grid;
+  row-gap: 2.25rem;
+
+}
+.nombreApellido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.25rem;
+}
+.inputCheckout {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border: 1px solid #8a8787;
+  border-radius: 0.25rem;
+}
+.containerBotonComprar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3rem;
+}
+
+.botonComprar {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  border: none;
+  background-color: rgb(5, 231, 156);
+  cursor: pointer;
+  padding: 12px 50px;
+}
+
+.containerFooter {
+  margin-top: 5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #8a8787;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3.25rem;
+}
+
+.pedido {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.25rem;
+  padding: 0 5rem;
+}
+.containerOrder {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  /* margin-top: 1rem; */
+}
+
+.itemDetail {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8a8787;
+}
+.imgDetail {
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+}
+.imgDetail img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  vertical-align: middle;
+}
+.titleItemDetail {
+  width: 80%;
+}
+.totalDetail {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+
+.priceDetail {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid #8a8787;
+}
+.priceItemDetail {
+ display: flex;
+}
+.priceItemDetail p {
+  align-self: flex-end;
+}
+
+.titleItemDetail {
+  margin: 0 .5rem;
+}
+
+.containerPriceDetail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.errorTrue {
+  color: red;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+.errorFalse {
+  color: red;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  display: none;
+}

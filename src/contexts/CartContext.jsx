@@ -11,9 +11,11 @@ export const CartContext = createContext();
 
 const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
-    const [total, setTotal] = useState(0)
+    const [subtotal, setSubtotal] = useState(0)
     const [cantidad, setCantidad] = useState(0)
     const CartCollectionRef = collection(db, 'cart')
+
+    
     const getCart = async () => {
     const cartCollection = await getDocs(CartCollectionRef);
     setCart(
@@ -21,8 +23,8 @@ const CartProvider = ({children}) => {
     );
     }
 
-    const SumaTotal = async () => {
-    setTotal(cart.reduce((acc, item) => acc + item.producto.price * item.producto.quantity, 0))
+    const SumaSubtotal = async () => {
+    setSubtotal(cart.reduce((acc, item) => acc + item.producto.price * item.producto.quantity, 0))
     }
     const CantidadTotal = async () => {
     setCantidad(cart.reduce((acc, item) => acc + item.producto.quantity, 0))
@@ -33,7 +35,7 @@ const CartProvider = ({children}) => {
         getCart()
     }, [])
     useEffect(() => {
-        SumaTotal()
+        SumaSubtotal()
     }, [cart])
     useEffect(() => {
         CantidadTotal()
@@ -44,7 +46,7 @@ const CartProvider = ({children}) => {
         const docRef = doc(db, 'cart', id)
         await deleteDoc(docRef)
         getCart()
-        SumaTotal()
+        SumaSubtotal()
     }
     const AddItemCart = async (item) => {
         const itemExist = cart.find((cartItem) => cartItem.producto.title === item.producto.title)
@@ -57,11 +59,11 @@ const CartProvider = ({children}) => {
                 }
             })
             getCart()
-            SumaTotal()
+            SumaSubtotal()
         } else {
             await addDoc(CartCollectionRef, item);
             getCart()
-            SumaTotal() 
+            SumaSubtotal() 
         }
     }
 
@@ -74,9 +76,9 @@ const CartProvider = ({children}) => {
             setCart, 
             deleteItem,
             AddItemCart, 
-            SumaTotal,
+            SumaSubtotal,
             CantidadTotal,
-            total,
+            subtotal,
             cantidad,
             CartCollectionRef}}
         >
