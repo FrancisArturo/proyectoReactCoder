@@ -5,7 +5,13 @@ import { CartContext } from '../../contexts/CartContext'
 
 const CartBody = () => {
 
-    const {cart, setCart, deleteItem} = useContext(CartContext)
+    const {cart, cantidad, setCart, deleteItem} = useContext(CartContext)
+
+    if (cantidad === 0) {
+        return (
+            <h6>No hay productos en el carrito!</h6>
+        )
+    }
     
     return (
             <div className='containerCart'>{cart.map((item)=> (
