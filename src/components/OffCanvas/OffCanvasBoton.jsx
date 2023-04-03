@@ -14,14 +14,14 @@ import { Link } from 'react-router-dom';
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {AddItemCart, subtotal} = useContext(CartContext)
+    const {AddItemCart, subtotal, cantidad} = useContext(CartContext)
     
   
 
     return (
       <>
         <button className="botonAgregar" onClick = {() => {handleShow(); AddItemCart({producto});}} >Agregar Al Carrito</button>
-        <Offcanvas show={show} onHide={handleClose} {...props}>
+        <Offcanvas show={show} onHide={handleClose} {...props} className="py-4 px-2">
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Tu Carrito</Offcanvas.Title>
           </Offcanvas.Header>
@@ -36,7 +36,7 @@ import { Link } from 'react-router-dom';
             <Link to={`/checkout`}>
             <div className='mt-3 w-100'>
               <div className='mt-3 w-100'>
-                <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={handleClose}>Checkout</button>
+                <button className='h-auto border border-dark rounded text-dark w-100 p-2 btnCheckout' onClick={handleClose} disabled={cantidad === 0}>Checkout</button>
               </div>
             </div>
             </Link> 

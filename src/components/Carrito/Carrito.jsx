@@ -42,10 +42,10 @@ const  OffCanvasExample = ({ name, ...props }) => {
                     <div className='subtotal d-flex justify-content-between'>
                         <div>Total</div>
                         <div>${subtotal} </div>
-                    </div>
+                    </div >
                         <div className='mt-3 w-100'>
                             <Link to={`/checkout`}>
-                            <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={() => {handleClose()}} disabled={cantidad === 0} >Checkout</button>
+                            <button className='h-auto border border-dark rounded text-dark w-100 p-2 btnCheckout' onClick={() => {handleClose()}} disabled={cantidad === 0} >Checkout</button>
                             </Link>  
                         </div>
                 </div>

@@ -271,3 +271,14 @@ button {
   line-height: 1.75rem;
   display: none;
 }
+.btnCheckout {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  border: none;
+  background-color: rgb(5, 231, 156);
+  cursor: pointer;
+  padding: 12px 50px;
+}
+.btnCheckout:hover {
+  background-color: rgb(5, 231, 156, 0.8);
+}
