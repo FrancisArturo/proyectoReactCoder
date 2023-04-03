@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { createContext, useContext, useState } from "react";
 import db from "../../db/firebase-config";
 import { CartContext } from "./CartContext";
@@ -8,6 +8,7 @@ export const CheckoutContext = createContext();
 const CheckoutProvider = ({children}) => {
     const {cart, subtotal, setCart} = useContext(CartContext);
     const [order, setOrder] = useState({});
+    const [orders, setOrders] = useState([]);
     const [date, setDate] = useState("");
     const [email, setEmail] = useState("");
     const [emailRepetido, setEmailRepetido] = useState("");
@@ -19,9 +20,9 @@ const CheckoutProvider = ({children}) => {
     const [errorTelefono, setErrorTelefono] = useState(false);
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorEmailRepetido, setErrorEmailRepetido] = useState(false);
-    const orderCollectionRef = collection(db, 'orders')
+    const ordersCollectionRef = collection(db, 'orders')
     const envio = 40;
-  
+
 
     const fecha = new Date().toLocaleString();
 
@@ -36,10 +37,11 @@ const CheckoutProvider = ({children}) => {
             total: subtotal + envio,
         };
         setOrder(
-            addDoc(orderCollectionRef, newOrder)
+            addDoc(ordersCollectionRef, newOrder)
         );
         setDate (fecha);
         vaciarCarrito();
+        getOrders();
     };
 
     const vaciarCarrito = () => {
@@ -51,7 +53,11 @@ const CheckoutProvider = ({children}) => {
     }
 
 
-
+    const getOrders = async () => {
+        const ordersCollection = await getDocs(ordersCollectionRef)
+        setOrders(ordersCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+        )
+    }
 
 
 
@@ -86,6 +92,8 @@ const CheckoutProvider = ({children}) => {
             setErrorEmailRepetido,
             createOrder,
             vaciarCarrito,
+            getOrders,
+            orders,
         }}
     >
         {children}
