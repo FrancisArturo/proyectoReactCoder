@@ -16,6 +16,7 @@ const  OffCanvasExample = ({ name, ...props }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
 
 
     const {subtotal, cantidad} = useContext(CartContext)
@@ -23,7 +24,6 @@ const  OffCanvasExample = ({ name, ...props }) => {
 
 
 
-    console.log(cantidad)
     return (
         <>
         <IconButton aria-label="cart" onClick={handleShow}>
@@ -45,7 +45,7 @@ const  OffCanvasExample = ({ name, ...props }) => {
                     </div>
                         <div className='mt-3 w-100'>
                             <Link to={`/checkout`}>
-                            <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={() => {handleClose()}}>Checkout</button>
+                            <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={() => {handleClose()}} disabled={cantidad === 0} >Checkout</button>
                             </Link>  
                         </div>
                 </div>
