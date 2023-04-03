@@ -1,28 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Order from "../Order/Order"
 import { CartContext } from "../../contexts/CartContext";
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
-import db from "../../../db/firebase-config";
 import { Link } from "react-router-dom";
+import { CheckoutContext } from "../../contexts/CheckoutContext";
 
 const Checkout = () => {
-  const {cart, subtotal, setCart} = useContext(CartContext);
-  const [order, setOrder] = useState({});
-  const [date, setDate] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailRepetido, setEmailRepetido] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [errorNombre, setErrorNombre] = useState(false);
-  const [errorApellido, setErrorApellido] = useState(false);
-  const [errorTelefono, setErrorTelefono] = useState(false);
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [errorEmailRepetido, setErrorEmailRepetido] = useState(false);
-  const orderCollectionRef = collection(db, 'orders')
-  const envio = 40;
+  const {cart, subtotal } = useContext(CartContext);
 
-  
+  const {setEmail, setNombre, setApellido, setTelefono, setErrorNombre, setErrorApellido, setErrorTelefono, setErrorEmail, setErrorEmailRepetido, email, nombre, apellido, telefono, envio, errorNombre, errorApellido, errorTelefono, errorEmail, errorEmailRepetido, emailRepetido, setEmailRepetido, createOrder} = useContext(CheckoutContext);
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -40,33 +25,7 @@ const Checkout = () => {
     setEmailRepetido(e.target.value);
   };
 
-  
-  const fecha = new Date().toLocaleString();
 
-  const createOrder = () => {
-    const newOrder = {
-      nombre : nombre,
-      apellido : apellido,
-      telefono : telefono,
-      email : email,
-      items: cart,
-      date : fecha,
-      total: subtotal + envio,
-    };
-    setOrder(
-      addDoc(orderCollectionRef, newOrder)
-    );
-    setDate (fecha);
-    vaciarCarrito();
-  };
-
-  const vaciarCarrito = () => {
-    cart.map((item) => {
-      const docRef = doc(db, 'cart', item.id)
-      deleteDoc(docRef)
-    })
-    setCart([]);
-  }
 
   const handleOnSubmit = (e) => {
     nombre? setErrorNombre(false): setErrorNombre(true);

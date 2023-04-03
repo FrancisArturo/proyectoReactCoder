@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import ItemDetailContainer from './components/ContenedorItem/ItemDetailContainer';
@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  CartProvider  from './contexts/CartContext';
 import Checkout from './components/Checkout/Checkout';
 import PedidoRegistrado from './components/PedidoRegistrado/PedidoRegistrado';
+import CheckoutProvider from './contexts/CheckoutContext';
 
 
 
@@ -36,6 +37,7 @@ function App() {
   return (
     <div>
       <CartProvider>
+      <CheckoutProvider>
       <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<ItemListContainer productos={productos} />} />
@@ -43,8 +45,9 @@ function App() {
         <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} /> 
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/finish" element={<PedidoRegistrado />} />
-        <Route path="/404" element={<h1>404: Not Found</h1>} />
+        <Route path="/404" element={<h1>Lo sentimos, el producto no existe!</h1>} />
       </Routes>
+      </CheckoutProvider>
       </CartProvider>
     </div>
     

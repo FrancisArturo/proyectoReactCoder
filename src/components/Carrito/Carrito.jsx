@@ -6,7 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartBody from '../ContenidoCarrito/CartBody';
 import { CartContext } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
-import Checkout from '../Checkout/Checkout';
+
 
 
 
@@ -19,9 +19,11 @@ const  OffCanvasExample = ({ name, ...props }) => {
 
 
     const {subtotal, cantidad} = useContext(CartContext)
+    
 
 
 
+    console.log(cantidad)
     return (
         <>
         <IconButton aria-label="cart" onClick={handleShow}>
@@ -41,11 +43,11 @@ const  OffCanvasExample = ({ name, ...props }) => {
                         <div>Total</div>
                         <div>${subtotal} </div>
                     </div>
-                    <Link to={`/checkout`}>
                         <div className='mt-3 w-100'>
-                            <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={handleClose}>Checkout</button>
+                            <Link to={`/checkout`}>
+                            <button className='h-auto border border-dark rounded text-dark w-100 p-2' onClick={() => {handleClose()}}>Checkout</button>
+                            </Link>  
                         </div>
-                    </Link>  
                 </div>
             </Offcanvas>
         </>
