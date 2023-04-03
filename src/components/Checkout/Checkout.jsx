@@ -89,7 +89,7 @@ const Checkout = () => {
               
                   <div className="containerBotonComprar">
                   <Link to={`finish`}>
-                  <button className="botonComprar" onClick={handleOnSubmit} disabled>Confirmar Pedido</button>
+                  <button className="botonComprar" onClick={handleOnSubmit}>Confirmar Pedido</button>
                   </Link>
                 </div>
               

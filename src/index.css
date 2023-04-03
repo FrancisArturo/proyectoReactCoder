@@ -263,11 +263,13 @@ button {
 .errorTrue {
   color: red;
   font-size: 1rem;
+  font-weight: 600;
   line-height: 1.75rem;
 }
 .errorFalse {
   color: red;
   font-size: 1rem;
+  font-weight: 600;
   line-height: 1.75rem;
   display: none;
 }
