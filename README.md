@@ -15,12 +15,12 @@ Para este proyecto se usó:
 
 -Hooks
 
--Material ui
+-Material UI
 
 -React Boostrap
 
 
-Materail ui se usó para la navbar, cards de productos, icono del carrito y botones.
+Material UI se usó para la navbar, cards de productos, icono del carrito y botones.
 
 React Boostrap se usó para el render del carrito a través del componente offcanvas/sidebar. 
 
