@@ -24,7 +24,6 @@ const PedidoRegistrado = () => {
                     <h3>Gracias por tu compra!</h3>
                     <h5>Tu id de pedido es: {order.id} </h5> 
                 </div>
-
             </div>
         )
     }
