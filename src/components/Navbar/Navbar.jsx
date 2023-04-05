@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 
 const pages = ['Nosotros', 'Blog'];
-const settings = ["men's clothing", "jewelery", "women's clothing", "electronics",];
+const settings = ["all", "men's clothing", "jewelery", "women's clothing", "electronics",];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,7 +39,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className='containerNavbar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -128,7 +128,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Abrir Categorías">
-              <Button variant="contained" onClick={handleOpenUserMenu} sx={{ p: 1}}>Categorías</Button>
+              <Button variant="contained" onClick={handleOpenUserMenu} sx={{ p: 1}} className='botonCategorias'>Categorías</Button>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}

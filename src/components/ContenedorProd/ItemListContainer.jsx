@@ -5,7 +5,7 @@ import Card from "../Card/Card"
 const ItemListContainer = ({productos}) => {
 
   const {categoryid} = useParams();
-  if (categoryid) {
+  if (categoryid && categoryid != "all") {
     productos = productos.filter((producto) => producto.category == categoryid);
   }
 
@@ -13,7 +13,9 @@ const ItemListContainer = ({productos}) => {
   return (
     <div className="ContainerProd">
       {productos.map((producto) => (
+  
         <Card key={producto.id} producto={producto} />
+        
       ))}
     </div>
   )

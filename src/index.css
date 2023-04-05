@@ -8,12 +8,13 @@ a {
   color: black; }
 
 body {
-  background-color: aquamarine;
+  background-color: rgb(215, 224, 236);
 }
 input {
     color: fieldtext;
     text-rendering: auto;
     outline: none;
+    background-color: rgb(215, 224, 236);;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -28,15 +29,16 @@ button {
 
 
 .containerNavbar {
-  display: flex;
-  background-color: rgb(70, 151, 124);
-  justify-content: space-around;
-  align-items: center;
+  background-color: #91b7dd !important;
 }
 .containerNavbar a {
   font-size: 30px;
   margin: 15px;
 }
+.botonCategorias {
+  background-color: rgb(52, 94, 218) !important;
+}
+
 
 .boton {
   border: 2px solid black;
@@ -55,15 +57,32 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  
-
 }
 .ContainerProd img{
-  width: 100%;
-  height: 200px;
+  width: 80%;
+  height: auto;
   object-fit: cover;
+  vertical-align: middle;
+  align-self: center;
+}
+.card {
+  width: 80%;
+  height: auto;
+  justify-content: center;
+}
+.cards {
+  height: 5rem;
+  width: 5rem;
 }
 
+.cardContainer {
+  display: flex !important;
+  flex-direction: column;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  padding: 1rem 0 !important;
+}
 .containerItem {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -80,6 +99,13 @@ button {
 .containerInformacion p {
   font-size: 20px;
 }
+.botonCategorias {
+  background-color: rgb(52, 94, 218);
+}
+.containerCarrito {
+  background-color: rgb(215, 224, 236);
+};
+
 
 .descripcion {
   display: flex;
@@ -132,7 +158,8 @@ button {
 .containerCart {
   display: grid;
   row-gap: 1.25rem;
-}
+};
+
 .subtotal {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -180,9 +207,10 @@ button {
   font-size: 1.25rem;
   line-height: 1.75rem;
   border: none;
-  background-color: rgb(5, 231, 156);
+  background-color: rgb(52, 94, 218);
   cursor: pointer;
   padding: 12px 50px;
+  color: white;
 }
 
 .containerFooter {
@@ -277,10 +305,23 @@ button {
   font-size: 1.25rem;
   line-height: 1.75rem;
   border: none;
-  background-color: rgb(5, 231, 156);
+  background-color: rgb(52, 94, 218);
   cursor: pointer;
   padding: 12px 50px;
 }
 .btnCheckout:hover {
-  background-color: rgb(5, 231, 156, 0.8);
+  background-color: #91b7dd
+}
+
+.containerCheckoutFinish {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.containerPedidoFinish {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  padding: 0 1rem;
+  border: 1px solid #8a8787;
 }

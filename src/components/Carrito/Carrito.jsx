@@ -31,7 +31,7 @@ const  OffCanvasExample = ({ name, ...props }) => {
                 <ShoppingCartIcon />
             </StyledBadge>
         </IconButton>
-            <Offcanvas show={show} onHide={handleClose} {...props} className="py-4 px-2">
+            <Offcanvas show={show} onHide={handleClose} {...props} className="py-4 px-2 containerCarrito">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Tu Carrito</Offcanvas.Title>
                 </Offcanvas.Header>
@@ -40,12 +40,12 @@ const  OffCanvasExample = ({ name, ...props }) => {
                 </Offcanvas.Body>
                 <div className='px-2 md:px4 mt-5'>
                     <div className='subtotal d-flex justify-content-between'>
-                        <div>Total</div>
+                        <div>SubTotal</div>
                         <div>${subtotal} </div>
                     </div >
                         <div className='mt-3 w-100'>
                             <Link to={`/checkout`}>
-                            <button className='h-auto border border-dark rounded text-dark w-100 p-2 btnCheckout' onClick={() => {handleClose()}} disabled={cantidad === 0} >Checkout</button>
+                            <button className='h-auto border border-dark rounded text-light w-100 p-2 btnCheckout' onClick={() => {handleClose()}} disabled={cantidad === 0} >Checkout</button>
                             </Link>  
                         </div>
                 </div>

@@ -101,7 +101,7 @@ const Checkout = () => {
           </footer>
         </div>
       </div>
-      <aside>
+      <aside className="containerAside">
         <div className="containerPedido">
           <div className="pedido">
             {cart.map((item) => (
