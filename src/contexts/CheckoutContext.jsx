@@ -34,6 +34,8 @@ const CheckoutProvider = ({children}) => {
             email : email,
             items: cart,
             date : fecha,
+            subtotal: subtotal,
+            envio: envio,
             total: subtotal + envio,
         };
         setOrder(

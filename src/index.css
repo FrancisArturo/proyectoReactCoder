@@ -251,7 +251,7 @@ button {
   height: 5rem;
 }
 .imgDetail img{
-  width: 100%;
+  width: 80%;
   height: auto;
   object-fit: cover;
   vertical-align: middle;
@@ -325,3 +325,61 @@ button {
   padding: 0 1rem;
   border: 1px solid #8a8787;
 }
+
+.misPedidosContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 5rem;
+  row-gap: 2rem;
+}
+
+.containerInputPedidos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.mostrarDetalleMisPedidosFalse {
+  display: none;
+}
+.totalDetailMisPedidos {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.25rem;
+  padding: 0 5rem;
+}
+.inputMisPedidos {
+  display: flex;
+  align-items: center;
+}
+
+.inputMisPedidos input {
+  width: 100%;
+  height: 1.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border: 1px solid #8a8787;
+  border-radius: 0.25rem;
+  margin-right: .5rem;
+}
+
+.botonMisPedidos {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  border: none;
+  background-color: rgb(52, 94, 218);
+  cursor: pointer;
+  padding: .2rem 1rem;
+  color: white;
+}
+.botonMisPedidos:hover {
+  background-color: #91b7dd
+}
+
+#tituloMisPedidos {
+  align-self: center;
+}
+

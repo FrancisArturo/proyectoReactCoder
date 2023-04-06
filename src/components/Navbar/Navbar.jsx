@@ -16,7 +16,7 @@ import Carrito from "../Carrito/Carrito"
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Nosotros', 'Blog'];
+const pages = ["Pedidos"];
 const settings = ["all", "men's clothing", "jewelery", "women's clothing", "electronics",];
 
 function ResponsiveAppBar() {
@@ -90,9 +90,11 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
+                
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+            
               ))}
             </Menu>
           </Box>
@@ -116,13 +118,14 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <Link to={`/${page}`} key={page}>
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 

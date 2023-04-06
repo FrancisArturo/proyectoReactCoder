@@ -11,6 +11,7 @@ import  CartProvider  from './contexts/CartContext';
 import Checkout from './components/Checkout/Checkout';
 import PedidoRegistrado from './components/PedidoRegistrado/PedidoRegistrado';
 import CheckoutProvider from './contexts/CheckoutContext';
+import MisPedidos from './components/MisPedidos/MisPedidos';
 
 
 
@@ -44,7 +45,8 @@ function App() {
         <Route path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
         <Route path="/category/:categoryid" element= {<ItemListContainer productos={productos} />} /> 
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/checkout/finish" element={<PedidoRegistrado />} />
+        <Route path="/checkout/finish" element={<PedidoRegistrado />}/>
+        <Route path="/Pedidos" element={<MisPedidos />}/>
         <Route path="/404" element={<h1>Lo sentimos, el producto no existe!</h1>} />
       </Routes>
       </CheckoutProvider>

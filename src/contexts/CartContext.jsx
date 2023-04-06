@@ -24,7 +24,8 @@ const CartProvider = ({children}) => {
     }
 
     const SumaSubtotal = async () => {
-    setSubtotal(cart.reduce((acc, item) => acc + item.producto.price * item.producto.quantity, 0))
+    const suma = cart.reduce((acc, item) => acc + item.producto.price * item.producto.quantity, 0)
+    setSubtotal(Math.round(suma))
     }
     const CantidadTotal = async () => {
     setCantidad(cart.reduce((acc, item) => acc + item.producto.quantity, 0))
