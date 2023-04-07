@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,10 +14,33 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from "../Navbar/valle3.png"
 import Carrito from "../Carrito/Carrito"
 import { Link } from 'react-router-dom';
+import { collection } from 'firebase/firestore';
+import db from '../../../db/firebase-config';
 
 
 const pages = ["Pedidos"];
-const settings = ["all", "men's clothing", "jewelery", "women's clothing", "electronics",];
+
+const settings = [
+  {title: "all", id: ""}, 
+  {title: "men's clothing", id: "6zxcbZU9njXnIG4ElkEj"}, 
+  {title: "jewelery", id: "OzepTRe3zaijfDvGnV4w"}, 
+  {title: "women's clothing", id: "6fYUNDkZGu5pui9NDfLE"}, 
+  {title: "electronics", id: "vUn98FKc6TBdk1yR9zVq"},
+];
+
+
+// const getCategories = async () => {
+//   const [categories, setCategories] = useState([]);
+//   const categoriesCollectionRef = collection(db, 'categories')
+//   const categoriesCollection = await getDocs(categoriesCollectionRef);
+//   setCategories(
+//     categoriesCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+//   );
+//   }
+
+//   useEffect (() => {
+//     getCategories()
+//   }, [])
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -150,9 +173,9 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link to={`/category/${setting}`} key={setting}>
+                <Link to={setting.title != "all"? `/categories/${setting.id}`: `/` } key={setting.title}>
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">{setting.title}</Typography>
                   </MenuItem>
                 </Link>
               ))}

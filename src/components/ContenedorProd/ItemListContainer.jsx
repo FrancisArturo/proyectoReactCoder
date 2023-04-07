@@ -4,9 +4,9 @@ import Card from "../Card/Card"
 
 const ItemListContainer = ({productos}) => {
 
-  const {categoryid} = useParams();
-  if (categoryid && categoryid != "all") {
-    productos = productos.filter((producto) => producto.category == categoryid);
+  const {id} = useParams();
+  if (id) {
+    productos = productos.filter((producto) => producto.category == id);
   }
 
 
