@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,8 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from "../Navbar/valle3.png"
 import Carrito from "../Carrito/Carrito"
 import { Link } from 'react-router-dom';
-import { collection } from 'firebase/firestore';
-import db from '../../../db/firebase-config';
+
 
 
 const pages = ["Pedidos"];
@@ -28,19 +26,6 @@ const settings = [
   {title: "electronics", id: "vUn98FKc6TBdk1yR9zVq"},
 ];
 
-
-// const getCategories = async () => {
-//   const [categories, setCategories] = useState([]);
-//   const categoriesCollectionRef = collection(db, 'categories')
-//   const categoriesCollection = await getDocs(categoriesCollectionRef);
-//   setCategories(
-//     categoriesCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-//   );
-//   }
-
-//   useEffect (() => {
-//     getCategories()
-//   }, [])
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
