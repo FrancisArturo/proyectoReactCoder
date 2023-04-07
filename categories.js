@@ -1,5 +1,9 @@
 const categories = [
     {
+        key: "all",
+        description: "all",
+    },
+    {
         key: "men's clothing",
         description: "men's clothing",
     },

@@ -13,23 +13,28 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from "../Navbar/valle3.png"
 import Carrito from "../Carrito/Carrito"
 import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import db from '../../../db/firebase-config';
 
 
 
 const pages = ["Pedidos"];
 
-const settings = [
-  {title: "all", id: ""}, 
-  {title: "men's clothing", id: "6zxcbZU9njXnIG4ElkEj"}, 
-  {title: "jewelery", id: "OzepTRe3zaijfDvGnV4w"}, 
-  {title: "women's clothing", id: "6fYUNDkZGu5pui9NDfLE"}, 
-  {title: "electronics", id: "vUn98FKc6TBdk1yR9zVq"},
-];
-
-
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [categories, setCategories] = useState([]);
+  const categoriesCollectionRef = collection(db, "categories");
+
+  const getCategories = async () => {
+    const categoriesCollection = await getDocs(categoriesCollectionRef);
+    setCategories(
+      categoriesCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    );
+  }
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -157,10 +162,10 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <Link to={setting.title != "all"? `/categories/${setting.id}`: `/` } key={setting.title}>
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting.title}</Typography>
+              {categories.map((category) => (
+                <Link to={category.description != "all"? `/categories/${category.description}`: `/` } key={category.key}>
+                  <MenuItem onClick={handleCloseUserMenu} >
+                    <Typography textAlign="center">{category.description}</Typography>
                   </MenuItem>
                 </Link>
               ))}
